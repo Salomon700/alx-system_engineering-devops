@@ -1,2 +1,2 @@
 #!/bin/bash
-grep "root" /etc/passwd | xarg echo
+grep "root" /etc/passwd | xargs echo
