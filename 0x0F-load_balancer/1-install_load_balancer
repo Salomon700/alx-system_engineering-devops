@@ -8,7 +8,8 @@ apt-get install -y haproxy=1.8.\*
 
 echo "ENABLED=1" > /etc/default/haproxy
 
-# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+# Listen to web1 and web2 servers
+
 echo "
    listen load_balancer
    bind *:80
@@ -20,4 +21,4 @@ echo "
    server 17272-web-02 3.237.16.226:80 check
 " >> /etc/haproxy/haproxy.cfg
 
-service haproxy start
+service haproxy starit
