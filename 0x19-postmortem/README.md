@@ -1,5 +1,8 @@
 Postmortem Report: Game Server Outage in 3D Maze Game
 
+![image](https://github.com/user-attachments/assets/049e3ae4-253a-434e-9bcd-2d71ca07a700)
+
+
 **Issue Summary**
 - Duration of the Outage: 2024-08-18, 09:00 - 11:30 UTC (2 hours 30 minutes)
 - Impact: The outage caused a complete failure of the multiplayer mode in the 3D Maze Game, preventing 80% of players from joining or staying connected to the game servers. Players experienced repeated disconnections and could not progress in the game, leading to widespread frustration and negative feedback.
@@ -23,11 +26,12 @@ The root cause of the outage was a memory leak in the session management code of
 **Resolution:**
 To resolve the issue, the memory leak was identified in the session management code, and a patch was applied to ensure that player sessions were properly terminated and memory was freed when players disconnected. As a temporary measure, the server's memory allocation was increased to prevent further crashes while the permanent fix was deployed. After patching the code and restarting the servers, the game’s multiplayer mode was fully restored.
 
-**Corrective and Preventative Measures**
-**Improvements/Fixes:**
-- Code Review: Conduct a thorough code review to identify and fix any additional memory leaks or inefficient memory usage.
-- Automated Testing: Implement automated tests to detect memory leaks during the development phase.
-- Enhanced Monitoring: Improve server monitoring to alert on abnormal memory usage or unexpected server restarts.
+**Corrective and Preventative Measures
+Improvements/Fixes:**
+
+- Axe the Session Monster: Conduct a full code review to ensure no other parts of the game are leaving “phantom sessions” behind.
+- Test the Code, Don’t Just Play the Game: Implement automated tests that specifically look for memory leaks—so no more surprise server crashes in the middle of someone’s epic maze run.
+- Big Brother for Servers: Enhance monitoring tools to alert us when memory usage spikes faster than a maze runner on turbo mode.
 
 **Tasks:**
 - Patch the session management code to prevent future memory leaks. 
